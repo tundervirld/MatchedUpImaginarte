@@ -1,0 +1,19 @@
+//
+//  PrefixHeader.pch
+//  MatchedUpImaginarte
+//
+//  Created by Roger Reyes on 30-11-14.
+//  Copyright (c) 2014 com.inzpiral. All rights reserved.
+//
+
+#ifndef MatchedUpImaginarte_PrefixHeader_pch
+#define MatchedUpImaginarte_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+//#import <Parse/Parse.h>
+#import <FacebookSDK/FacebookSDK.h>
+#import <Parse/Parse.h>
+#import <ParseFacebookUtils/PFFacebookUtils.h>
+#import "CCConstants.h"
+#endif
