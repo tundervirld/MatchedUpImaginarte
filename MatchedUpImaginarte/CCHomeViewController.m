@@ -9,6 +9,7 @@
 #import "CCHomeViewController.h"
 #import "CCTestUser.h"
 #import "CCProfileViewController.h"
+//#import "CCMatchViewController.h"
 
 @interface CCHomeViewController ()
 
@@ -134,6 +135,7 @@
         self.isLikedByCurrentUser = YES;
         self.isDislikedByCurrentUser = NO;
         [self.activities addObject: likeActivity];
+        [self checkForPhotoUserLikes];
         [self setupNextPhoto];
     }];
 }
@@ -185,12 +187,67 @@
     }
 }
 
+- (void)checkForPhotoUserLikes
+{
+    PFQuery *query = [PFQuery queryWithClassName:kCCActivityClassKey];
+    [query whereKey:kCCActivityFromUserKey equalTo:self.photo[kCCPhotoUserKey]];
+    [query whereKey:kCCActivityToUserKey equalTo:[PFUser currentUser]];
+    [query whereKey:kCCActivityTypeKey equalTo:kCCActivityTypeLikeKey];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if ([objects count] > 0){
+            //create our chatroom here
+            [self createChatRoom];
+        }
+    }];
+}
+
+- (void)createChatRoom
+
+{
+    NSLog(@"create called");
+    PFQuery *queryForChatRoom = [PFQuery queryWithClassName:@"ChatRoom"];
+    [queryForChatRoom whereKey:@"user1" equalTo:[PFUser currentUser]];
+    [queryForChatRoom whereKey:@"user2" equalTo:self.photo[kCCPhotoUserKey]];
+   
+    PFQuery *queryForChatRoomInverse = [PFQuery queryWithClassName:@"ChatRoom"];
+    [queryForChatRoomInverse whereKey:@"user1" equalTo:self.photo[kCCPhotoUserKey]];
+    [queryForChatRoomInverse whereKey:@"user2" equalTo:[PFUser currentUser]];
+    
+    PFQuery *combinedQuery = [PFQuery orQueryWithSubqueries:@[queryForChatRoom, queryForChatRoomInverse]];
+    [combinedQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if ([objects count] == 0) {
+            PFObject *chatroom = [PFObject objectWithClassName:@"ChatRoom"];
+            [chatroom setObject:[PFUser currentUser] forKey:@"user1"];
+            [chatroom setObject:self.photo[kCCPhotoUserKey] forKey:@"user2"];
+            [chatroom saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                [self performSegueWithIdentifier:@"homeToMatchSegue" sender:nil];
+            }];
+        }
+    }];
+}
+
+#pragma mark - CCMatchViewController Delegate
+
+-(void)presentMatchesViewController
+{
+    [self dismissViewControllerAnimated:NO completion:^{
+        [self performSegueWithIdentifier:@"homeToMatchesSegue" sender:nil];
+    }];
+}
+
+
+
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([segue.identifier isEqualToString:@"homeToProfileSegue"]){
         CCProfileViewController *profileVC = segue.destinationViewController;
         profileVC.photo = self.photo;
+    }else if ([segue.identifier isEqualToString:@"homeToMatchSegue"])
+    {
+        CCMatchViewController *matchVC = segue.destinationViewController;
+        matchVC.matchedUserImage = self.photoImageView.image;
+        matchVC.delegate = self;
     }
-    
 }
 
 - (IBAction)likeButtonPressed:(UIButton *)sender{

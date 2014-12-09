@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CCMatchViewController.h"
 
-@interface CCHomeViewController : UIViewController
+@interface CCHomeViewController : UIViewController<CCMatchViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *chatBarButtonItem;
 

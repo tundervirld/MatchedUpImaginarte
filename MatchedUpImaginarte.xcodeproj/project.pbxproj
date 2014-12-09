@@ -10,6 +10,7 @@
 		A124B85F1A2BBCC300C641B9 /* CCConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = A124B85E1A2BBCC300C641B9 /* CCConstants.m */; };
 		A16A1DF91A363FCB00561418 /* CCMatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16A1DF81A363FCB00561418 /* CCMatchViewController.m */; };
 		A16A1DFD1A3642C100561418 /* CCMatchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16A1DFC1A3642C100561418 /* CCMatchesViewController.m */; };
+		A16A1E061A364D9100561418 /* CCChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16A1E051A364D9100561418 /* CCChatViewController.m */; };
 		A1D7E4981A34D5F200915612 /* CCHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D7E4971A34D5F200915612 /* CCHomeViewController.m */; };
 		A1D7E49C1A34D9E800915612 /* CCSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D7E49B1A34D9E800915612 /* CCSettingsViewController.m */; };
 		A1E438771A34DD6500124833 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E438761A34DD6500124833 /* EditProfileViewController.m */; };
@@ -47,6 +48,8 @@
 		A16A1DF81A363FCB00561418 /* CCMatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMatchViewController.m; sourceTree = "<group>"; };
 		A16A1DFB1A3642C100561418 /* CCMatchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMatchesViewController.h; sourceTree = "<group>"; };
 		A16A1DFC1A3642C100561418 /* CCMatchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMatchesViewController.m; sourceTree = "<group>"; };
+		A16A1E041A364D9100561418 /* CCChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCChatViewController.h; sourceTree = "<group>"; };
+		A16A1E051A364D9100561418 /* CCChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCChatViewController.m; sourceTree = "<group>"; };
 		A1D7E4961A34D5F200915612 /* CCHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHomeViewController.h; sourceTree = "<group>"; };
 		A1D7E4971A34D5F200915612 /* CCHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHomeViewController.m; sourceTree = "<group>"; };
 		A1D7E49A1A34D9E800915612 /* CCSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSettingsViewController.h; sourceTree = "<group>"; };
@@ -124,6 +127,8 @@
 		A16A1DFE1A3643B300561418 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				A16A1E041A364D9100561418 /* CCChatViewController.h */,
+				A16A1E051A364D9100561418 /* CCChatViewController.m */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -409,6 +414,7 @@
 				A1F982811A2B787200ECA704 /* CCLoginViewController.m in Sources */,
 				A1D7E49C1A34D9E800915612 /* CCSettingsViewController.m in Sources */,
 				A1F9825C1A2B75C500ECA704 /* AppDelegate.m in Sources */,
+				A16A1E061A364D9100561418 /* CCChatViewController.m in Sources */,
 				A1F982591A2B75C500ECA704 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
